@@ -15,7 +15,7 @@ export default class Quiz extends React.Component {
             { answerText: "Paris", isCorrect: true },
             { answerText: "Dublin", isCorrect: false },
           ],
-          id:1
+          id: 1,
         },
         {
           questionText: "Who is CEO of Tesla?",
@@ -25,7 +25,7 @@ export default class Quiz extends React.Component {
             { answerText: "Bill Gates", isCorrect: false },
             { answerText: "Tony Stark", isCorrect: false },
           ],
-          id:2
+          id: 2,
         },
         {
           questionText: "The iPhone was created by which company?",
@@ -35,7 +35,7 @@ export default class Quiz extends React.Component {
             { answerText: "Amazon", isCorrect: false },
             { answerText: "Microsoft", isCorrect: false },
           ],
-          id:3
+          id: 3,
         },
         {
           questionText: "How many Harry Potter books are there?",
@@ -45,7 +45,7 @@ export default class Quiz extends React.Component {
             { answerText: "6", isCorrect: false },
             { answerText: "7", isCorrect: true },
           ],
-          id:4
+          id: 4,
         },
       ],
       currentQuestion: 0,
@@ -58,14 +58,18 @@ export default class Quiz extends React.Component {
     this.state.currentQuestion === this.state.questions.length - 1 &&
       this.setState({ showScore: true });
 
-    this.setState((prevState) => ({
-      currentQuestion: prevState.currentQuestion + 1,
-    }));
+    this.setState((prevState) => {
+      return {
+        currentQuestion: prevState.currentQuestion + 1,
+      };
+    });
 
     state &&
-      this.setState((prevState) => ({
-        score: prevState.score + 1,
-      }));
+      this.setState((prevState) => {
+        return {
+          score: prevState.score + 1,
+        };
+      });
   }
 
   render() {
@@ -88,7 +92,9 @@ export default class Quiz extends React.Component {
               </div>
             </div>
             <div className="answer-section">
-              {this.state.questions.map((question, index) => (
+              {this.state.questions[
+                this.state.currentQuestion
+              ].answerOptions.map((answer, index) => (
                 <button
                   onClick={() =>
                     this.answer(
@@ -96,12 +102,9 @@ export default class Quiz extends React.Component {
                         .answerOptions[index].isCorrect
                     )
                   }
-                  key={question.id}
+                  key={this.state.questions[index].id}
                 >
-                  {
-                    this.state.questions[this.state.currentQuestion]
-                      .answerOptions[index].answerText
-                  }
+                  {answer.answerText}
                 </button>
               ))}
             </div>
