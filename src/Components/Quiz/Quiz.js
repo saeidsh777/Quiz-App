@@ -15,6 +15,7 @@ export default class Quiz extends React.Component {
             { answerText: "Paris", isCorrect: true },
             { answerText: "Dublin", isCorrect: false },
           ],
+          id:1
         },
         {
           questionText: "Who is CEO of Tesla?",
@@ -24,6 +25,7 @@ export default class Quiz extends React.Component {
             { answerText: "Bill Gates", isCorrect: false },
             { answerText: "Tony Stark", isCorrect: false },
           ],
+          id:2
         },
         {
           questionText: "The iPhone was created by which company?",
@@ -33,6 +35,7 @@ export default class Quiz extends React.Component {
             { answerText: "Amazon", isCorrect: false },
             { answerText: "Microsoft", isCorrect: false },
           ],
+          id:3
         },
         {
           questionText: "How many Harry Potter books are there?",
@@ -42,6 +45,7 @@ export default class Quiz extends React.Component {
             { answerText: "6", isCorrect: false },
             { answerText: "7", isCorrect: true },
           ],
+          id:4
         },
       ],
       currentQuestion: 0,
@@ -84,58 +88,22 @@ export default class Quiz extends React.Component {
               </div>
             </div>
             <div className="answer-section">
-              <button
-                onClick={() =>
-                  this.answer(
+              {this.state.questions.map((question, index) => (
+                <button
+                  onClick={() =>
+                    this.answer(
+                      this.state.questions[this.state.currentQuestion]
+                        .answerOptions[index].isCorrect
+                    )
+                  }
+                  key={question.id}
+                >
+                  {
                     this.state.questions[this.state.currentQuestion]
-                      .answerOptions[0].isCorrect
-                  )
-                }
-              >
-                {
-                  this.state.questions[this.state.currentQuestion]
-                    .answerOptions[0].answerText
-                }
-              </button>
-              <button
-                onClick={() =>
-                  this.answer(
-                    this.state.questions[this.state.currentQuestion]
-                      .answerOptions[1].isCorrect
-                  )
-                }
-              >
-                {
-                  this.state.questions[this.state.currentQuestion]
-                    .answerOptions[1].answerText
-                }
-              </button>
-              <button
-                onClick={() =>
-                  this.answer(
-                    this.state.questions[this.state.currentQuestion]
-                      .answerOptions[2].isCorrect
-                  )
-                }
-              >
-                {
-                  this.state.questions[this.state.currentQuestion]
-                    .answerOptions[2].answerText
-                }
-              </button>
-              <button
-                onClick={() =>
-                  this.answer(
-                    this.state.questions[this.state.currentQuestion]
-                      .answerOptions[3].isCorrect
-                  )
-                }
-              >
-                {
-                  this.state.questions[this.state.currentQuestion]
-                    .answerOptions[3].answerText
-                }
-              </button>
+                      .answerOptions[index].answerText
+                  }
+                </button>
+              ))}
             </div>
           </div>
         )}
