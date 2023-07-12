@@ -39,7 +39,7 @@ body {
   
   /* QUESTION/TIMER/LEFT SECTION */
   .question-section {
-    width: 100%;
+    width: 50%;
     position: relative;
   }
   
@@ -67,7 +67,7 @@ body {
   
   /* ANSWERS/RIGHT SECTION */
   .answer-section {
-    width: 100%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -106,5 +106,10 @@ body {
   
   button svg {
     margin-right: 5px;
+  }
+
+  .container{
+    width: 100%;
+    display: flex;
   }
   

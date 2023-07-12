@@ -51,7 +51,7 @@ export default class Quiz extends React.Component {
   }
 
   answer(state) {
-    this.state.currentQuestion === this.state.questions.length -1 &&
+    this.state.currentQuestion === this.state.questions.length - 1 &&
       this.setState({ showScore: true });
 
     this.setState((prevState) => ({
@@ -62,7 +62,6 @@ export default class Quiz extends React.Component {
       this.setState((prevState) => ({
         score: prevState.score + 1,
       }));
-
   }
 
   render() {
@@ -70,10 +69,12 @@ export default class Quiz extends React.Component {
       <div className="app">
         {/* next div is for showing user score */}
         {this.state.showScore && (
-          <div className="score-section">You scored {this.state.score} out of 4</div>
+          <div className="score-section">
+            You scored {this.state.score} out of 4
+          </div>
         )}
         {this.state.currentQuestion < this.state.questions.length && (
-          <div>
+          <div className="container">
             <div className="question-section">
               <div className="question-count">
                 <span>Question {this.state.score + 1}</span>/ 4
